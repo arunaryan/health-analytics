@@ -1,3 +1,8 @@
+## Author: Arun Kiran Aryasomayajula
+## Last edit: 05/19/2016
+
+## Script to read UCI banking data set and solve the 2-class classification problem using various ML algorithms in h2o and standard R libraries.
+
 setwd("~/")
 library(h2o)
 library(data.table)
@@ -17,9 +22,9 @@ library(stats)
 
 ## Fit various calssification models using the h2o suite of models
 
-localH2O = h2o.init(ip = 'localhost', port = 54321, nthreads= -2,max_mem_size = '8g')
+localH2O = h2o.init(ip = 'localhost', port = 54321, nthreads= -1,max_mem_size = '8g')
 
-banking.hex <- h2o.uploadFile(path = "C:\\Users\\aaryasomayajula\\Downloads\\banking.csv")
+banking.hex <- h2o.uploadFile(path = "banking.csv")
 banking.hex[,21] <-as.factor(banking.hex[,21])
 
 banking <- as.data.frame(banking.hex)
