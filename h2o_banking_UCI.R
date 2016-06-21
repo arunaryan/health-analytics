@@ -2,8 +2,8 @@
 ## Last edit: 05/19/2016
 
 ## Script to read UCI banking data set and solve the 2-class classification problem using various ML algorithms in h2o and standard R libraries.
-
-setwd("~/")
+## data folder-- http://archive.ics.uci.edu/ml/machine-learning-databases/00222/
+## data description -- http://archive.ics.uci.edu/ml/datasets/Bank+Marketing#
 library(h2o)
 library(data.table)
 library(glmnet)
