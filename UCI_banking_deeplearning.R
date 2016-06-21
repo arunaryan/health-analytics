@@ -5,7 +5,7 @@ localH2O = h2o.init(ip = 'localhost', port = 54321, nthreads= -1,max_mem_size = 
 banking$y <-as.factor(banking$y)
 
 
-banking <- h2o.importFile(path = normalizePath("C:\\Users\\aaryasomayajula\\Downloads\\h2o_example\\banking.csv"))
+banking <- h2o.importFile(path = normalizePath("banking.csv"))
 
 dim(banking)
 head(banking)
