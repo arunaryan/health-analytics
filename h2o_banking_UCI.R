@@ -6,9 +6,6 @@
 setwd("~/")
 library(h2o)
 library(data.table)
-library(Hmisc)
-library(rms)
-library(ggplot2)
 library(glmnet)
 library(randomForest)
 library(pROC)
@@ -54,7 +51,7 @@ h2o.auc(gbm.h2o.perf1)
 plot(gbm.h2o.model1, timestep = "number_of_trees", metric = "logloss")
 
 h2o.saveModel(object = gbm.h2o.model1, path = "C:\\DATA SCIENCE\\Arun\\R_code\\h2o\\", force=TRUE)
-
+h2o.download_pojo(gbm.h2o.model1)
 ## Fit GLM model to banking.hex as y~.
 
 myX = setdiff(colnames(trainset.hex), c("y"))
@@ -71,13 +68,14 @@ glm.h2o.perf <- h2o.performance(glm.h2o.model,testset.hex)
 h2o.auc(glm.h2o.perf)
 plot(glm.h2o.model, timestep = "number_of_trees", metric = "log_likelihood")
 h2o.saveModel(object = glm.h2o.model, path = "C:\\DATA SCIENCE\\Arun\\R_code\\h2o\\", force=TRUE)
+h2o.download_pojo(glm.h2o.model)
 
 print(glmcv.h2o.model)
 glmcv.h2o.perf <- h2o.performance(glmcv.h2o.model,testset.hex)
 h2o.auc(glmcv.h2o.perf)
 plot(glmcv.h2o.model, timestep = "number_of_trees", metric = "log_likelihood")
 h2o.saveModel(object = glmcv.h2o.model, path = "C:\\DATA SCIENCE\\Arun\\R_code\\h2o\\", force=TRUE)
-
+h2o.download_pojo(glmcv.h2o.model)
 
 ## Fit RandomForest to trainset.hex
 
@@ -90,7 +88,7 @@ rfor.h2o.perf <- h2o.performance(rfor.h2o.model,testset.hex)
 h2o.auc(rfor.h2o.perf)
 plot(rfor.h2o.model, timestep = "number_of_trees", metric = "AUC")
 h2o.saveModel(object = rfor.h2o.model, path = "C:\\DATA SCIENCE\\Arun\\R_code\\h2o\\", force=TRUE)
-
+h2o.download_pojo(rfor.h2o.model)
 
 # ################################################################################
 # # MODEL FITTING AND ROC ANALYSIS USING standard R libraries
